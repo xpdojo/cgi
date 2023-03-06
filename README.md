@@ -1,2 +1,4 @@
-# cgi
-In computing, Common Gateway Interface is an interface specification that enables web servers to execute an external program, typically to process user requests.
+# CGI
+
+In computing, Common Gateway Interface is an interface specification
+that enables web servers to execute an external program, typically to process user requests.
