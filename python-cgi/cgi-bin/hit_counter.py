@@ -3,9 +3,14 @@
 import cgitb
 import html
 import os
+import sys
 import time
 
-cgitb.enable()
+# Set output encoding to UTF-8
+sys.stdout.buffer.write(b"Content-Type: text/html; charset=utf-8\n\n")
+
+# Enable cgitb for debugging
+cgitb.enable(display=0, logdir=".", format="text")
 
 hit_count_path = os.path.join(os.path.dirname(__file__), "hit-count.txt")
 
@@ -23,11 +28,11 @@ else:
 with open(hit_count_path, 'w') as fp:
     fp.write(str(hit_count))
 
-header = "Content-type: text/html\n\n"
+header = "Content-type: text/html; charset=utf-8\n\n"
 
 date_string = time.strftime('%A, %B %d, %Y at %I:%M:%S %p %Z')
 
-html = """
+html = f"""
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,13 +41,14 @@ html = """
 </head>
 <body>
   <p>
-  Date: {0}
+  Date: {html.escape(date_string)}
   </p>
   <p>
-  Hit count: {1}
+  Hit count: {html.escape(str(hit_count))}
   </p>
 </body>
 </html>
-""".format(html.escape(date_string), html.escape(str(hit_count)))
+"""
 
-print(header + html)
+print(header)
+print(html)
