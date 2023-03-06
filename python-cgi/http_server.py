@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # https://pointlessprogramming.wordpress.com/2011/02/13/python-cgi-tutorial-1/
 # https://docs.python.org/3/library/http.server.html
 import http.server
